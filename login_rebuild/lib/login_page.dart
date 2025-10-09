@@ -69,56 +69,75 @@ class _LoginPageState extends State<LoginPage> {
         padding: const EdgeInsets.all(24.0),
         child: Center(
           child: SingleChildScrollView(
-            child: Column(
-              children: [
-                const Text(
-                  "Đăng nhập",
-                  style: TextStyle(fontSize: 30, color: Colors.white),
+            child: Container(
+              width: 450, // chiều rộng form  login
+              padding: const EdgeInsets.all(24),
+              decoration: BoxDecoration(
+                color: Colors.white, // nền trắng
+                borderRadius: BorderRadius.circular(12), // bo góc
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black,
+                    blurRadius: 10,
+                    offset: const Offset(2, 4),
+                  ),
+                ],
+                border: Border.all(
+                  color: Colors.black, // màu viền
+                  width: 2,
                 ),
-                const SizedBox(height: 45),
-                TextField(
-                  controller: _usernameController,
-                  decoration: const InputDecoration(
-                    labelText: "Tài khoản",
-                    labelStyle: TextStyle(color: Colors.white70),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white38),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Text(
+                    "Đăng nhập",
+                    style: TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
                     ),
                   ),
-                ),
-                const SizedBox(height: 16),
-                TextField(
-                  controller: _passwordController,
-                  obscureText: true,
-                  decoration: const InputDecoration(
-                    labelText: "Mật khẩu",
-                    labelStyle: TextStyle(color: Colors.white70),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white38),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
+                  const SizedBox(height: 30),
+                  TextField(
+                    controller: _usernameController,
+                    decoration: const InputDecoration(
+                      labelText: "Tài khoản",
+                      border: OutlineInputBorder(),
                     ),
                   ),
-                ),
-                const SizedBox(height: 24),
-                ElevatedButton(
-                  onPressed: writeCache,
-                  child: const Text("Đăng nhập"),
-                ),
-                const SizedBox(height: 8),
-                TextButton(
-                  onPressed: _signUp,
-                  child: const Text("Tạo tài khoản mới"),
-                ),
-                TextButton(
-                  onPressed: _forgotPassword,
-                  child: const Text("Quên mật khẩu"),
-                ),
-              ],
+                  const SizedBox(height: 16),
+                  TextField(
+                    controller: _passwordController,
+                    obscureText: true,
+                    decoration: const InputDecoration(
+                      labelText: "Mật khẩu",
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: writeCache,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.black87,
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                      ),
+                      child: const Text("Đăng nhập"),
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  TextButton(
+                    onPressed: _signUp,
+                    child: const Text("Tạo tài khoản mới"),
+                  ),
+                  TextButton(
+                    onPressed: _forgotPassword,
+                    child: const Text("Quên mật khẩu"),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
