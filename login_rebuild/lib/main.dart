@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'login_page.dart';
-import 'home_page.dart';
+import 'home_page.dart'; // no problem if not used
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPrefService {
@@ -53,7 +53,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      backgroundColor: Colors.lightBlue,
+      backgroundColor: Colors.black54,
       body: Center(
         child: Text(
           'Welcome 👋',
