@@ -7,8 +7,8 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(title: const Text("Home")),
+      backgroundColor: Colors.black87,
+      appBar: AppBar(title: const Text('QUẢN LÝ ĐIỆN NƯỚC'), centerTitle: true),
       body: Center(
         child: ElevatedButton(
           onPressed: () {
