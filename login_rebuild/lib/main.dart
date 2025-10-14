@@ -1,19 +1,7 @@
 import 'package:flutter/material.dart';
 import 'login_page.dart';
-import 'home_page.dart'; // no problem if not used
-// import 'package:custom_icons_example/my_icons.dart';
-// import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-class SharedPrefService {
-  Future writeCache({required String key, required String value}) async {
-    final SharedPreferences pref = await SharedPreferences.getInstance();
-
-    bool isSaved = await pref.setString(key, value);
-
-    debugPrint(isSaved.toString());
-  }
-}
+//import 'home_page.dart'; // no problem if not used
+//import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,6 +9,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+  static final String title = 'Icons + Custom Icons';
 
   @override
   Widget build(BuildContext context) {
