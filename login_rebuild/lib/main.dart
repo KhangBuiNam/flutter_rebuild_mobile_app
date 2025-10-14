@@ -16,7 +16,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Login Demo',
-      theme: ThemeData.dark(),
+      theme: ThemeData(
+        brightness: Brightness.light,
+        scaffoldBackgroundColor: Colors.black54,
+      ),
       home: const SplashScreen(),
     );
   }
@@ -48,7 +51,7 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Center(
         child: Text(
           'Welcome 👋',
-          style: TextStyle(fontSize: 28, color: Colors.white),
+          style: TextStyle(fontSize: 28, color: Colors.black87),
         ),
       ),
     );
