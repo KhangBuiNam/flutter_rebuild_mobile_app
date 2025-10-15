@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'login_page.dart'; // ✅ thêm dòng này
 
 void main() {
   runApp(const HomeTest());
@@ -21,6 +22,8 @@ class HomeTest extends StatelessWidget {
     );
   }
 }
+
+// ------------------- TỪ ĐÂY LÀ CODE CŨ -------------------
 
 class ApartmentData {
   String name;
@@ -118,11 +121,11 @@ class _HomePageState extends State<HomePage> {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
         backgroundColor: const Color(0xFF0F3460),
-        actions: [
+        actions: const [
           Icon(Icons.home),
-          const SizedBox(width: 8),
+          SizedBox(width: 8),
           Icon(Icons.water_drop),
-          const SizedBox(width: 16),
+          SizedBox(width: 16),
         ],
       ),
       body: _buildBody(),
@@ -145,7 +148,7 @@ class _HomePageState extends State<HomePage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.bar_chart),
-            label: 'Thống tin',
+            label: 'Thống kê',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle),
@@ -176,7 +179,7 @@ class _HomePageState extends State<HomePage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.add_home, size: 80, color: Colors.pinkAccent),
+          const Icon(Icons.add_home, size: 80, color: Colors.pinkAccent),
           const SizedBox(height: 24),
           const Text(
             'Thêm Căn Hộ Mới',
@@ -322,13 +325,26 @@ class _HomePageState extends State<HomePage> {
         Text(
           'admin@quanlydiennuoc.vn',
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 16, color: Colors.grey[400]),
+          style: TextStyle(fontSize: 16, color: Colors.grey),
         ),
         const SizedBox(height: 32),
+
         _buildAccountOption(Icons.settings, 'Cài đặt'),
         _buildAccountOption(Icons.notifications, 'Thông báo'),
         _buildAccountOption(Icons.help, 'Trợ giúp'),
-        _buildAccountOption(Icons.logout, 'Đăng xuất', isRed: true),
+
+        // ✅ Sửa phần Đăng xuất
+        _buildAccountOption(
+          Icons.logout,
+          'Đăng xuất',
+          isRed: true,
+          onTap: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (_) => const LoginPage()),
+            );
+          },
+        ),
       ],
     );
   }
@@ -337,6 +353,7 @@ class _HomePageState extends State<HomePage> {
     IconData icon,
     String title, {
     bool isRed = false,
+    VoidCallback? onTap,
   }) {
     return Card(
       margin: const EdgeInsets.only(bottom: 12),
@@ -344,7 +361,7 @@ class _HomePageState extends State<HomePage> {
         leading: Icon(icon, color: isRed ? Colors.red : Colors.pinkAccent),
         title: Text(title, style: TextStyle(color: isRed ? Colors.red : null)),
         trailing: const Icon(Icons.chevron_right),
-        onTap: () {},
+        onTap: onTap ?? () {},
       ),
     );
   }
@@ -458,7 +475,6 @@ class _HomePageState extends State<HomePage> {
 
 class ApartmentDetailPage extends StatelessWidget {
   final ApartmentData apartment;
-
   const ApartmentDetailPage({Key? key, required this.apartment})
     : super(key: key);
 
